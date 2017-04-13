@@ -11,3 +11,15 @@ export function* incrementAsync() {
 export function* watchIncrementAsync() {
   yield takeEvery('INCREMENT_ASYNC', incrementAsync)
 }
+
+export function* helloSaga() {
+  console.log('Hello Sagas!')
+}
+
+// two resulting Generators will be started in parallel
+export default function* rootSaga() {
+  yield [
+    helloSaga(),
+    watchIncrementAsync()
+  ]
+}

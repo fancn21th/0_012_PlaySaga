@@ -7,7 +7,7 @@ import createSagaMiddleware from 'redux-saga'
 
 import Counter from './Counter'
 import reducer from './reducers'
-import { watchIncrementAsync } from './sagas'
+import { rootSaga } from './sagas'
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -18,7 +18,7 @@ const store = createStore(
   composeEnhancers(applyMiddleware(sagaMiddleware))
 )
 
-sagaMiddleware.run(watchIncrementAsync)
+sagaMiddleware.run(rootSaga)
 
 const action = type => store.dispatch({type})
 
