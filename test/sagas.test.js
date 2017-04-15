@@ -6,4 +6,7 @@ test('incrementAsync Saga tes', () => {
   const gen = incrementAsync()
 
   expect(gen.next().value).toEqual(call(delay, 1000))
-});
+  expect(gen.next().value).toEqual(put({ type: 'INCREMENT' }))
+  expect(gen.next()).toEqual({value: undefined, done: true})
+
+})
