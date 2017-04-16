@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from 'redux-saga/effects'
+import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
 import { fetchUser } from '../../api'
 
 export function* requestUser(){
@@ -10,6 +10,11 @@ export function* requestUser(){
   }
 }
 
+export function* recieveUser() {
+  console.log('user has been recieved', Date.now())
+}
+
 export function* watchRequestUser(){
-  yield takeEvery('REQUEST_USER', requestUser)
+  yield takeLatest('REQUEST_USER', requestUser)
+  yield takeEvery('RECIEVE_USER', recieveUser)
 }
