@@ -6,7 +6,7 @@ export function* requestUser(){
     const users = yield call(fetchUser)
     yield put({type: 'RECIEVE_USER', users})
   } catch (error) {
-    console.error('failed to recieve user', error)
+    yield call(console.error, ['failed to recieve user', error])
   }
 }
 
