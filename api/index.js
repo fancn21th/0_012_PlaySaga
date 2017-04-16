@@ -14,8 +14,6 @@ const fakeDatabase = {
 const delay = (ms) =>
   new Promise(resolve => setTimeout(resolve, ms))
 
-const fetchUser = (url) => {
-  delay(2000).then(() => {
-    return fakeDatabase.users
-  })
-}
+export const fetchUser = () =>
+  delay(2000).then(() => fakeDatabase.users)
+

@@ -15,7 +15,8 @@ const App = ({ store }) => {
         onIncrementAsync={() => action('INCREMENT_ASYNC')}
       />
       <User
-        user={store.getState().user}
+        users={store.getState().user.users}
+        onRequestUser={() => action('REQUEST_USER')}
       />
     </div>
   )

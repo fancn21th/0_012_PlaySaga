@@ -1,19 +1,34 @@
 import React, { Component, PropTypes } from 'react'
 
-const User = ({ user }) => (
-  <ul>
-    {
-      user.users.map(user => (
-        <li> {user.name } </li>
-      ))
-    }
-  </ul>
-)
+class User extends Component {
 
+  componentDidMount() {
+    this.fetchData()
+  }
+
+  fetchData() {
+    const { onRequestUser } = this.props
+    onRequestUser()
+  }
+
+  render(){
+    const { users } = this.props
+
+    return (
+      <ul>
+        {
+          users.map(user => (
+            <li key={user.id}> {user.name } </li>
+          ))
+        }
+      </ul>
+    )
+  }
+}
 
 User.propTypes = {
   users: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
   }).isRequired).isRequired,
 }
