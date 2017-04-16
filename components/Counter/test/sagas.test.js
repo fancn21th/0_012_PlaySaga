@@ -19,6 +19,6 @@ test('helloSaga Saga test', () => {
 test('watchIncrementAsync Saga test', () => {
   const gen = watchIncrementAsync()
 
-  expect(gen.next()).toEqual(takeEvery('INCREMENT_ASYNC', incrementAsync))
+  expect(gen.next().value).toEqual(takeEvery('INCREMENT_ASYNC', incrementAsync))
   expect(gen.next()).toEqual({value: undefined, done: true})
 })
