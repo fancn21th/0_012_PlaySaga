@@ -1,4 +1,4 @@
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
+import { call, put, takeEvery, takeLatest, take, select } from 'redux-saga/effects'
 import { fetchUser } from '../../api'
 
 export function* requestUser(){
@@ -18,3 +18,20 @@ export function* watchRequestUser(){
   yield takeLatest('REQUEST_USER', requestUser)
   yield takeEvery('RECIEVE_USER', recieveUser)
 }
+
+// export function* watchAndLog() {
+//   yield takeEvery('*', function (action) {
+//     const state = select()
+//
+//     console.log(action)
+//     console.log(state)
+//   })
+//
+//   // while(true){
+//   //   const action = take('*')
+//   //   const state = select()
+//   //
+//   //   console.log(action)
+//   //   console.log(state)
+//   // }
+// }

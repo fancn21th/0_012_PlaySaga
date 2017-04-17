@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 import Counter from '../Counter'
 import User from '../User'
+import Todos from '../Todos'
+import { createTodo } from '../Todos/actions'
 
 const App = ({ store }) => {
 
@@ -17,6 +19,11 @@ const App = ({ store }) => {
       <User
         users={store.getState().user.users}
         onRequestUser={() => action('REQUEST_USER')}
+      />
+      <Todos
+        todos={store.getState().todos.todoList}
+        showCongrats={store.getState().todos.congrats}
+        onCreateTodo={(title) => store.dispatch(createTodo(title))}
       />
     </div>
   )
