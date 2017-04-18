@@ -4,7 +4,7 @@ import User from '../User'
 import Todos from '../Todos'
 import Login from '../Login'
 import { createTodo } from '../Todos/actions'
-import { login } from '../Login/actions'
+import { login, logout } from '../Login/actions'
 
 const App = ({ store }) => {
 
@@ -30,6 +30,7 @@ const App = ({ store }) => {
       <Login
         token={store.getState().loginInfo.token.token || ''}
         onLogin={(username, password, verificationCode) => store.dispatch(login(username, password, verificationCode))}
+        onLogout={() => store.dispatch(logout())}
       />
     </div>
   )

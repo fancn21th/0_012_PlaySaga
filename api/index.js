@@ -18,4 +18,7 @@ export const fetchUser = () =>
   delay(2000).then(() => fakeDatabase.users)
 
 export const login = (username, passsword, verificationCode) =>
-  delay(2000).then(() => Date.now().toString())
+  delay(2000).then(() => username + '_' + Date.now().toString())
+
+export const logout = () =>
+  delay(2000)

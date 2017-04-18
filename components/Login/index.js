@@ -9,6 +9,11 @@ class Login extends Component {
     }
   }
 
+  logout = () => {
+    const { onLogout } = this.props
+    onLogout()
+  }
+
   render(){
     const { token } = this.props
     const loginMsg = token ? <p> You have login as { token }</p> : ''
@@ -41,6 +46,9 @@ class Login extends Component {
         <button onClick={this.login}>
           Login
         </button>
+        <button onClick={this.logout}>
+          Logout
+        </button>
         {loginMsg}
       </div>
     )
@@ -49,6 +57,7 @@ class Login extends Component {
 
 Login.propTypes = {
   onLogin: PropTypes.func.isRequired,
+  onLogout: PropTypes.func.isRequired,
   token: PropTypes.string.isRequired
 }
 

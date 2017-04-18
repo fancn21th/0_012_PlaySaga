@@ -13,6 +13,8 @@ const token = (state = { token: null }, action) => {
   switch (action.type) {
     case 'LOGIN_SUCCEED':
       return Object.assign(state, {token: action.token})
+    case 'LOGOUT_SUCCEED':
+      return Object.assign(state, {token: null})
     default:
       return state
   }
