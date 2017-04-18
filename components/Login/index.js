@@ -1,8 +1,18 @@
-import React, { Component, PropsType } from 'react'
+import React, { Component, PropTypes } from 'react'
 
 class Login extends Component {
 
+  login = () => {
+    const { onLogin } = this.props
+    if(this.nameField.value && this.passwordField.value && this.verificationCodeField.value){
+      onLogin(this.nameField.value, this.passwordField.value, this.verificationCodeField.value)
+    }
+  }
+
   render(){
+    const { token } = this.props
+    const loginMsg = token ? <p> You have login as { token }</p> : ''
+
     return (
       <div>
         <h3>Login</h3>
@@ -27,9 +37,19 @@ class Login extends Component {
         <button>
           Send Verification Code
         </button>
+        <br/>
+        <button onClick={this.login}>
+          Login
+        </button>
+        {loginMsg}
       </div>
     )
   }
+}
+
+Login.propTypes = {
+  onLogin: PropTypes.func.isRequired,
+  token: PropTypes.string.isRequired
 }
 
 export default Login

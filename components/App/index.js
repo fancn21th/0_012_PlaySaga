@@ -4,6 +4,7 @@ import User from '../User'
 import Todos from '../Todos'
 import Login from '../Login'
 import { createTodo } from '../Todos/actions'
+import { login } from '../Login/actions'
 
 const App = ({ store }) => {
 
@@ -26,7 +27,10 @@ const App = ({ store }) => {
         showCongrats={store.getState().todos.congrats}
         onCreateTodo={(title) => store.dispatch(createTodo(title))}
       />
-      <Login/>
+      <Login
+        token={store.getState().loginInfo.token.token || ''}
+        onLogin={(username, password, verificationCode) => store.dispatch(login(username, password, verificationCode))}
+      />
     </div>
   )
 }

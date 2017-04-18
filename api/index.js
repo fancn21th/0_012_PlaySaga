@@ -17,3 +17,5 @@ const delay = (ms) =>
 export const fetchUser = () =>
   delay(2000).then(() => fakeDatabase.users)
 
+export const login = (username, passsword, verificationCode) =>
+  delay(2000).then(() => Date.now().toString())
