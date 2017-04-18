@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import Counter from '../Counter'
 import User from '../User'
 import Todos from '../Todos'
+import Login from '../Login'
 import { createTodo } from '../Todos/actions'
 
 const App = ({ store }) => {
@@ -25,6 +26,7 @@ const App = ({ store }) => {
         showCongrats={store.getState().todos.congrats}
         onCreateTodo={(title) => store.dispatch(createTodo(title))}
       />
+      <Login/>
     </div>
   )
 }

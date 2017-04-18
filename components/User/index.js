@@ -11,6 +11,8 @@ class User extends Component {
     const { users } = this.props
     return (
       <div>
+        <h3>User</h3>
+        <hr />
         <button onClick={() => this.fetchData()}>
           Request User
         </button>

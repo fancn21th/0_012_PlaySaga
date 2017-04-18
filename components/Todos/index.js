@@ -14,6 +14,8 @@ class Todos extends Component {
     const congrats = showCongrats ? <p> Congrats! You have created three new todos!</p> : ''
     return (
       <div>
+        <h3>Todos</h3>
+        <hr />
         <input
           type="text"
           ref={(input) => { this.textInput = input; }} />

@@ -2,6 +2,8 @@ import React, { PropTypes } from 'react'
 
 const Counter = ({ value, onIncrement, onDecrement, onIncrementAsync }) =>
   <div>
+    <h3>Counter</h3>
+    <hr />
     <button onClick={onIncrement}>
       Increment
     </button>
