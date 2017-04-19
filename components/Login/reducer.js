@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 
 const loginUser = (state = { username: null }, action) => {
   switch (action.type) {
-    case 'REQUEST_LOGIN':
+    case 'LOGIN_REQUEST':
       return Object.assign(state, {username: action.username})
     default:
       return state

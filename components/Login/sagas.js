@@ -19,9 +19,9 @@ export function* requestLogout() {
 }
 
 export function* watchRequestLogin() {
-  yield takeLatest('REQUEST_LOGIN', requestLogin)
+  yield takeLatest('LOGIN_REQUEST', requestLogin)
 }
 
 export function* watchRequestLogout () {
-  yield takeLatest('REQUEST_LOGOUT', requestLogout)
+  yield takeLatest('LOGOUT_REQUEST', requestLogout)
 }

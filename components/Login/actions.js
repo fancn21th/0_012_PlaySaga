@@ -1,10 +1,10 @@
 export const login = (username, password, verificationCode) => ({
-  type: 'REQUEST_LOGIN',
+  type: 'LOGIN_REQUEST',
   username,
   password,
   verificationCode
 })
 
 export const logout = () => ({
-  type: 'REQUEST_LOGOUT'
+  type: 'LOGOUT_REQUEST'
 })
