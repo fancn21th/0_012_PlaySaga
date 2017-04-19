@@ -4,6 +4,8 @@ const loginUser = (state = { username: null }, action) => {
   switch (action.type) {
     case 'LOGIN_REQUEST':
       return Object.assign(state, {username: action.username})
+    case 'LOGOUT_SUCCEED':
+      return Object.assign(state, {username: null})
     default:
       return state
   }
