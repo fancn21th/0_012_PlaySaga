@@ -61,6 +61,11 @@ export function* loginNonBlockingFlow() {
     const { username, password, verificationCode } = yield take('LOGIN_REQUEST')
     const task = yield fork(loginRequest, username, password, verificationCode)
     const action = yield take(['LOGOUT_REQUEST','LOGIN_FAILED'])
+
+    // case 1. loginRequest succeed before logout action
+    // case 2. loginRequest fails before logout action
+    // case 3. logout action before loginRequest terminate
+
     if(action.type === 'LOGOUT_REQUEST'){
       yield cancel(task)
     }
