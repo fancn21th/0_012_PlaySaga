@@ -3,7 +3,7 @@ import Counter from '../Counter'
 import User from '../User'
 import Todos from '../Todos'
 import Login from '../Login'
-import { createTodo } from '../Todos/actions'
+import { createTodo, undoTodo } from '../Todos/actions'
 import { login, logout } from '../Login/actions'
 
 const App = ({ store }) => {
@@ -24,8 +24,10 @@ const App = ({ store }) => {
       />
       <Todos
         todos={store.getState().todos.todoList}
+        undos={store.getState().todos.undoList}
         showCongrats={store.getState().todos.congrats}
         onCreateTodo={(title) => store.dispatch(createTodo(title))}
+        onUndoTodo={(id) => store.dispatch(undoTodo(id))}
       />
       <Login
         token={store.getState().loginInfo.token.token || ''}

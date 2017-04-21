@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import CancelButton from '../CancelButton'
 
 class Todos extends Component {
 
@@ -10,7 +11,7 @@ class Todos extends Component {
   }
 
   render(){
-    const { todos, showCongrats } = this.props
+    const { todos, showCongrats, undos, onUndoTodo } = this.props
     const congrats = showCongrats ? <p> Congrats! You have created three new todos!</p> : ''
     return (
       <div>
@@ -25,9 +26,17 @@ class Todos extends Component {
         </button>
         <ul>
           {
-            todos.map(todo => (
-              <li key={todo.id}>{todo.title}</li>
-            ))
+            todos.map(todo =>
+              (
+                <li key={todo.id}>
+                  {todo.title}
+                  <CancelButton
+                    id={todo.id}
+                    onClick={onUndoTodo}
+                  />
+                </li>
+              )
+            )
           }
         </ul>
       </div>
@@ -42,6 +51,7 @@ Todos.propTypes = {
   }).isRequired).isRequired,
   showCongrats: PropTypes.bool.isRequired,
   onCreateTodo: PropTypes.func.isRequired,
+  onUndoTodo: PropTypes.func.isRequired
 }
 
 export default Todos

@@ -18,9 +18,19 @@ const congrats = (state = false, action) => {
   }
 }
 
+const undoList = (state = {}, action) => {
+  switch (action.type){
+    case 'CREATE_TODO':
+      return Object.assign(state, {[action.todo.id]: true})
+    default:
+      return state
+  }
+}
+
 const todos = combineReducers({
   todoList,
-  congrats
+  congrats,
+  undoList
 })
 
 export default todos
