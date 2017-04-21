@@ -9,7 +9,7 @@ export function* watchFirstThreeTodosCreation() {
 
 export function* undoTodoCreation(action) {
   const { id } = action
-  console.log(id)
+  yield put({type:'REMOVE_TODO',id})
 }
 
 export function* watchUndoTodoCreation() {

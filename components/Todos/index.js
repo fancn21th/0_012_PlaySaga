@@ -20,10 +20,10 @@ class Todos extends Component {
         <input
           type="text"
           ref={(input) => { this.textInput = input; }} />
-        {congrats}
         <button onClick={this.createTodo}>
           Create Todo
         </button>
+        {congrats}
         <ul>
           {
             todos.map(todo =>
