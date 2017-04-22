@@ -3,9 +3,9 @@ import { combineReducers } from 'redux'
 const loginUser = (state = { username: null }, action) => {
   switch (action.type) {
     case 'LOGIN_REQUEST':
-      return Object.assign(state, {username: action.username})
+      return Object.assign({}, state, {username: action.username})
     case 'LOGOUT_REQUEST':
-      return Object.assign(state, {username: null})
+      return Object.assign({}, state, {username: null})
     default:
       return state
   }
@@ -14,9 +14,9 @@ const loginUser = (state = { username: null }, action) => {
 const token = (state = { token: null }, action) => {
   switch (action.type) {
     case 'LOGIN_SUCCEED':
-      return Object.assign(state, {token: action.token})
+      return Object.assign({}, state, {token: action.token})
     case 'LOGOUT_SUCCEED':
-      return Object.assign(state, {token: null})
+      return Object.assign({}, state, {token: null})
     default:
       return state
   }

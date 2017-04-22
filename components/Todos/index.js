@@ -30,10 +30,17 @@ class Todos extends Component {
               (
                 <li key={todo.id}>
                   {todo.title}
-                  <CancelButton
-                    id={todo.id}
-                    onClick={onUndoTodo}
-                  />
+                  {
+                    undos[todo.id] === true ?
+                      (
+                        <CancelButton
+                          id={todo.id}
+                          onClick={onUndoTodo}
+                        />
+                      )
+                      :
+                      null
+                  }
                 </li>
               )
             )

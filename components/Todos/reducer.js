@@ -23,7 +23,11 @@ const congrats = (state = false, action) => {
 const undoList = (state = {}, action) => {
   switch (action.type){
     case 'CREATE_TODO':
-      return Object.assign(state, {[action.todo.id]: true})
+      return Object.assign({}, state, {[action.todo.id]: true})
+    case 'REMOVE_TODO':
+      return state
+    case 'LOCK_UNDO':
+      return Object.assign({}, state, {[action.id]: false})
     default:
       return state
   }

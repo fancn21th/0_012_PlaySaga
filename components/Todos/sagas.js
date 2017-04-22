@@ -1,4 +1,5 @@
-import { take, put, takeEvery, spawn } from 'redux-saga/effects'
+import { take, call, put, takeEvery, spawn, race } from 'redux-saga/effects'
+import { delay } from 'redux-saga'
 
 export function* watchFirstThreeTodosCreation() {
   for(let i = 0; i < 3; i++){
@@ -7,15 +8,26 @@ export function* watchFirstThreeTodosCreation() {
   yield put({type: 'SHOW_CONGRATS'})
 }
 
-export function* undoTodoCreation(action) {
-  const { id } = action
-  yield put({type:'REMOVE_TODO',id})
+export function* createTodo(action) {
+  const { todo } = action
+  const { id } = todo
+
+  const { undo, create } = yield race({
+    undo: take(action => action.type === 'UNDO_TODO' && action.id === id),
+    create: call(delay, 2000)
+  })
+
+  if(undo){
+    yield put({type:'REMOVE_TODO', id})
+  }else if(create){
+    yield put({type:'LOCK_UNDO', id})
+  }
 }
 
-export function* watchUndoTodoCreation() {
+export function* watchTodoCreation() {
   while(true){
-    const action = yield take('UNDO_TODO')
-    yield spawn(undoTodoCreation, action)
+    const action = yield take('CREATE_TODO')
+    yield spawn(createTodo, action)
   }
 }
 
