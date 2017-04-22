@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 
 const CancelButton = ({ id, onClick }) => (
   <button onClick={() => onClick(id)}>
-    Cancel {id}
+    Cancel
   </button>
 )
 

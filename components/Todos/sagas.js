@@ -14,7 +14,7 @@ export function* createTodo(action) {
 
   const { undo, create } = yield race({
     undo: take(action => action.type === 'UNDO_TODO' && action.id === id),
-    create: call(delay, 2000)
+    create: call(delay, 4000)
   })
 
   if(undo){
