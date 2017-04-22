@@ -3,7 +3,7 @@ import React, { PropTypes, Component } from 'react'
 class CancelButton extends Component {
 
   state = {
-    secondLeft : 5
+    secondLeft : 4
   }
 
   componentDidMount = () => {
